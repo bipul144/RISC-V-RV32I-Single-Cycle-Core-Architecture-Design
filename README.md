@@ -3,7 +3,7 @@ A complete Verilog HDL implementation and verification environment for a 32-bit 
 This project includes modular RTL hardware modules, instruction and data memory subsystems, custom assembly programs, and automated Xilinx Vivado simulation testbenches.
 
 📌 Project Overview
-RV32I ISA Compliance:Supports full 32-bit integer base instruction formats (R-type, I-type, S-type, B-type, U-type, and J-type).  
+RV32I ISA Compliance: Supports full 32-bit integer base instruction formats (R-type, I-type, S-type, B-type, U-type, and J-type).  
 Modular RTL Architecture: Structured Verilog HDL design featuring isolated modules for the ALU, Register File ($32 \times 32$-bit registers), Control Unit, Instruction Memory, and Data Memory.
 Algorithmic Execution: Includes a test assembly program that initializes a 6-element array, computes the maximum array value, and writes the output back to data memory.
 Complete Simulation Suite: Pre-configured with Vivado waveform configurations (.wcfg), compiled machine code hex maps, and execution traces.
@@ -21,3 +21,50 @@ x10 (a0): Base memory address pointer / Function argument
 x11 (a1): Array element holder / Intermediate max value  
 x12 (a2): Loop counter index (i)  
 x13 (a3): Array length bound (N)
+RISC-V 32I Single-Cycle Processor
+This repository contains a complete single-cycle RISC-V 32I processor, designed and implemented in SystemVerilog.
+
+It is part of a full, end-to-end course that walks through the complete design of a RISC-V 32I single-cycle processor — from instruction decoding to running real programs on the processor. Mastering RISC-V in SystemVerilog
+
+Project Goals
+Understand the RISC-V 32I ISA at the bit level
+Translate instruction formats into real hardware
+Design a clean, modular CPU datapath
+Run real assembly programs on a custom processor
+Demonstrate how software and hardware connect end-to-end
+What This Processor Supports
+ISA: RISC-V RV32I
+Instruction Types:
+R-type
+I-type (Arithmetic, Load, JALR)
+S-type
+B-type
+U-type (LUI, AUIPC)
+J-type (JAL)
+Execution Model: Single-cycle
+Memory:
+Byte-addressable instruction memory
+Byte-addressable data memory
+Simulation: ModelSim / Questa
+Architecture Overview
+The processor is built from clearly separated, reusable blocks:
+
+Instruction Memory
+Fetch
+Decode
+Register File
+ALU
+Data Memory
+Branch Control
+Control Unit
+Top-Level Integration
+All shared definitions (opcodes, ALU operations, memory sizes, control signals) are centralized in a SystemVerilog package, keeping the design clean, readable, and scalable.
+
+Programs Executed on This Processor
+The processor successfully runs the following programs end-to-end:
+
+Maximum Value Finder
+Iterates through an array and stores the maximum value.
+
+Fibonacci Sequence Generator
+Computes Fibonacci numbers iteratively and stores them in memory.
